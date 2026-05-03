@@ -1,0 +1,20 @@
+import { Note } from "../../models/note.js";
+import createHttpError from 'http-errors';
+
+export async function updateNote(req, res) {
+  const { noteId } = req.params;
+
+  const note = await Note.findOneAndUpdate(
+    { _id: noteId, userId: req.user._id },
+    req.body,
+    { returnDocument: "after" },
+  );
+
+  if (!note) {
+    throw createHttpError(404, 'Note not found');
+  }
+
+  res.status(200).json(note);
+}
+
+
