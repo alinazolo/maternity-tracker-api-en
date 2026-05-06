@@ -6,23 +6,47 @@ export const getBabyState = async (req, res, next) => {
     const user = req.user;
 
     if (!user || !user.dueDate) {
-      return res.status(400).json({ message: 'No due date provided' });
+      return res.status(400).json({
+        message: 'No due date provided',
+      });
     }
 
-    const currentWeek = getCurrentWeek(new Date(user.dueDate));
-    const daysLeftTo = daysLeft(new Date(user.dueDate));
-    const currentDayOfWeek = 280 - daysLeftTo - (currentWeek - 1) * 7;
+    const requestedWeek = req.query.week ? Number(req.query.week) : null;
 
-    const babyState = await BabyState.findOne({ weekNumber: currentWeek });
+    const currentWeek =
+      requestedWeek || getCurrentWeek(new Date(user.dueDate));
+
+    const babyState = await BabyState.findOne({
+      weekNumber: currentWeek,
+    });
+
     if (!babyState) {
-      return res.status(404).json({ message: 'Baby state not found' });
+      return res.status(404).json({
+        message: 'Baby state not found',
+      });
     }
+
+    const daysLeftTo = daysLeft(new Date(user.dueDate));
+
+    const currentDayOfWeekRaw =
+      280 - daysLeftTo - (currentWeek - 1) * 7;
+
+    const currentDayOfWeek = Math.min(
+      Math.max(currentDayOfWeekRaw, 0),
+      babyState.momDailyTips.length - 1,
+    );
 
     const currentMomDailyTips =
-      babyState.momDailyTips[currentDayOfWeek] || 'Порада не знайдена';
-    babyState.momDailyTips = currentMomDailyTips;
+      babyState.momDailyTips[currentDayOfWeek] ||
+      'Порада не знайдена';
 
-    res.status(200).json(babyState);
+    const response = {
+      ...babyState.toObject(),
+      momDailyTips: currentMomDailyTips,
+      daysLeftTo
+    };
+
+    res.status(200).json(response);
   } catch (error) {
     next(error);
   }
