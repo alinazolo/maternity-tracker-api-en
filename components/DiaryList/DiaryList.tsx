@@ -21,13 +21,13 @@ export default function DiaryList({
     return (
       <div className={styles.container}>
         <div className={styles.listHeader}>
-          <h2 className={styles.listTitle}>Ваші записи</h2>
+          <h2 className={styles.listTitle}>Your entries</h2>
           <button
             className={styles.newEntryButton}
             onClick={onEntryCreate}
-            aria-label="Додати новий запис"
+            aria-label="Add a new entry"
           >
-            Новий запис
+            New entry
             <svg width={18} height={18}>
               <use href="/icons.svg#plus"></use>
             </svg>
@@ -40,13 +40,13 @@ export default function DiaryList({
   return (
     <div className={styles.container}>
       <div className={styles.listHeader}>
-        <h2 className={styles.listTitle}>Ваші записи</h2>
+        <h2 className={styles.listTitle}>Your entries</h2>
         <button
           className={styles.newEntryButton}
           onClick={onEntryCreate}
-          aria-label="Додати новий запис"
+          aria-label="Add a new entry"
         >
-          Новий запис
+          New entry
           <span className={styles.plusIcon} aria-hidden="true">
             <svg width={18} height={18}>
               <use href="/icons.svg#plus"></use>

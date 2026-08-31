@@ -51,9 +51,9 @@ export default function AddTaskForm({ onClose }: AddTaskFormProps) {
     const isMin = elem.value.length < 1;
     const isMax = elem.value.length > 96;
     if (isBlank || isMin || isMax) {
-      if (isBlank) setTitleErr('Це поле обов`язкове');
-      if (isMin) setTitleErr('Має мінімум 1 символ.');
-      if (isMax) setTitleErr('Максимально 96 символів.');
+      if (isBlank) setTitleErr('This field is required');
+      if (isMin) setTitleErr('Must be at least 1 character.');
+      if (isMax) setTitleErr('Maximum 96 characters.');
       setIsErrText(true);
     } else {
       setIsErrText(false);
@@ -79,15 +79,15 @@ export default function AddTaskForm({ onClose }: AddTaskFormProps) {
     initialValues: { title: '', date: today },
     onSubmit: values => {
       if (values.title === '') {
-        setTitleErr('Це поле обов`язкове');
+        setTitleErr('This field is required');
         setIsErrText(true);
         return;
       } else if (values.title.length < 1) {
-        setTitleErr('Має бути мінімум 1 символ.');
+        setTitleErr('Must be at least 1 character.');
         setIsErrText(true);
         return;
       } else if (values.title.length > 96) {
-        setTitleErr('Максимально 96 символів.');
+        setTitleErr('Maximum 96 characters.');
         setIsErrText(true);
         return;
       } else if (new Date(values.date).getDate() <= new Date(today).getDate()) {
@@ -104,7 +104,7 @@ export default function AddTaskForm({ onClose }: AddTaskFormProps) {
       <Toaster position="top-right" />
       <div className={css.formGroup}>
         <label className={css.text} htmlFor={`title-${id}`}>
-          Назва завдання
+          Task name
         </label>
         <input
           onChange={changeText}
@@ -112,12 +112,12 @@ export default function AddTaskForm({ onClose }: AddTaskFormProps) {
           name="title"
           className={clsx(css.input, isErrText && css.inputInvalid)}
           type="text"
-          placeholder="Прийняти вітаміни"
+          placeholder="Take vitamins"
         />
         {isErrText && <span className={css.errMess}>{titleErr}</span>}
       </div>
       <div className={css.formGroup}>
-        <label className={css.text}>Дата</label>
+        <label className={css.text}>Date</label>
         <DatePicker
           selected={inputDate}
           onChange={(date: Date | null) => changeDate(date)}
@@ -127,11 +127,11 @@ export default function AddTaskForm({ onClose }: AddTaskFormProps) {
           autoComplete="off"
         />
         {isDateErr && (
-          <span className={css.errMess}>Дата має бути хочаб завтра</span>
+          <span className={css.errMess}>The date must be at least tomorrow</span>
         )}
       </div>
       <button className={css.btn} type="submit" disabled={isFetching}>
-        {createMutation.isPending ? 'Збереження...' : 'Зберегти'}
+        {createMutation.isPending ? 'Saving...' : 'Save'}
       </button>
     </form>
   );

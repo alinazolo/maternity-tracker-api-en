@@ -20,11 +20,11 @@ export default function BabyTodayCard({
 
   return (
     <section className={styles.babycard}>
-      <p className={styles.titleBaby}>Малюк сьогодні</p>
+      <p className={styles.titleBaby}>Baby Today</p>
       <div id="BabyState" className={styles.babycard__listitem}>
         <Image
         src={imageUrl}
-        alt="Зображення малюка"
+        alt="Baby Image"
         width={257}
         height={194}
         className={styles.babyImage}
@@ -32,26 +32,26 @@ export default function BabyTodayCard({
         <ul className={styles.babycard__list}>
   <li>
     <p className={styles.babycard__datalabel}>
-      <span className={styles.label}>Розмір:</span>
+      <span className={styles.label}>Size:</span>
       <span className={styles.value}>{size}</span>
     </p>
   </li>
 
   <li>
     <p className={styles.babycard__datalabel}>
-      <span className={styles.label}>Вага:</span>
+      <span className={styles.label}>Weight:</span>
       <span className={styles.value}>{weight}</span>
     </p>
   </li>
 
   <li>
     <p className={styles.babycard__datalabel}>
-      <span className={styles.label}>Активність:</span>
+      <span className={styles.label}>Activity:</span>
       <span className={styles.value}>{activity}</span>
     </p>
   </li>
         </ul>
-        
+
       </div>
 
       <div className={styles.bodyAdvice}>

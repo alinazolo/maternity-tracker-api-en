@@ -17,7 +17,7 @@ export default function AddDiaryEntryModal({
   return (
     <Modal onClose={onClose}>
       <h2 className={styles.header}>
-        {initialData ? 'Редагувати запис' : 'Новий запис'}
+        {initialData ? 'Edit entry' : 'New entry'}
       </h2>
       <div className={styles.content}>
         <AddDiaryEntryForm onSuccess={onClose} initialData={initialData} />

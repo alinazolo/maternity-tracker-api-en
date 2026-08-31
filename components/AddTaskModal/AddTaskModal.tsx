@@ -12,7 +12,7 @@ export default function AddTaskModal({ onClose }: TaskModalProps) {
   return (
     <Modal onClose={onClose}>
       <div className={css.box}>
-        <p className={css.title}>Нове завдання</p>
+        <p className={css.title}>New Task</p>
         <AddTaskForm onClose={onClose}/>
       </div>
     </Modal>

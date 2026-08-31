@@ -5,10 +5,10 @@ export default function AuthBar() {
   return (
     <div className={styles.wrapper}>
       <Link href="/register" className={styles.primary}>
-        Зареєструватись
+        Register
       </Link>
       <Link href="/login" className={styles.secondary}>
-        Увійти
+        Login
       </Link>
     </div>
   );

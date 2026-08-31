@@ -23,12 +23,12 @@ export type FormValues = {
 };
 
 const schema = Yup.object({
-  title: Yup.string().required('Введіть заголовок'),
-  description: Yup.string().required('Введіть текст'),
+  title: Yup.string().required('Enter a title'),
+  description: Yup.string().required('Enter text'),
   emotions: Yup.array()
     .of(Yup.string().required())
-    .min(1, 'Оберіть емоцію')
-    .required('Оберіть емоцію'),
+    .min(1, 'Select an emotion')
+    .required('Select an emotion'),
 });
 
 type OptionType = {
@@ -83,7 +83,7 @@ export default function AddDiaryEntryForm({
         const data = await getEmotions();
         setEmotions(data?.emotions || []);
       } catch {
-        toast.error('Помилка при отриманні списку емоцій');
+        toast.error('Error fetching the list of emotions');
         setEmotions([]);
       }
     };
@@ -131,12 +131,12 @@ export default function AddDiaryEntryForm({
               await createNote(payload);
             }
 
-            toast.success(initialData ? 'Оновлено' : 'Створено');
+            toast.success(initialData ? 'Updated' : 'Created');
             queryClient.invalidateQueries({ queryKey: ['notes'] });
             onSuccess();
             router.refresh();
           } catch {
-            toast.error('Помилка при збереженні запису');
+            toast.error('Error saving the entry');
           } finally {
             setSubmitting(false);
           }
@@ -144,12 +144,12 @@ export default function AddDiaryEntryForm({
       >
         {({ values, setFieldValue, isSubmitting }) => (
           <Form className={styles.form}>
-            {/* Заголовок */}
-            <label htmlFor="title">Заголовок</label>
+            {/* Title */}
+            <label htmlFor="title">Title</label>
             <Field
               id="title"
               name="title"
-              placeholder="Введіть заголовок"
+              placeholder="Enter a title"
               className={styles.input}
             />
             <ErrorMessage
@@ -158,8 +158,8 @@ export default function AddDiaryEntryForm({
               className={styles.error}
             />
 
-            {/* Емоції */}
-            <label>Категорії</label>
+            {/* Emotions */}
+            <label>Categories</label>
             <Select
               isMulti
               components={{
@@ -179,7 +179,7 @@ export default function AddDiaryEntryForm({
                   selected ? selected.map(s => s.value) : []
                 );
               }}
-              placeholder="Оберіть емоції"
+              placeholder="Select emotions"
               closeMenuOnSelect={false}
               hideSelectedOptions={false}
               styles={{
@@ -272,13 +272,13 @@ export default function AddDiaryEntryForm({
               className={styles.error}
             />
 
-            {/* Текст */}
-            <label htmlFor="text">Запис</label>
+            {/* Text */}
+            <label htmlFor="text">Entry</label>
             <Field
               as="textarea"
               id="text"
               name="description"
-              placeholder="Як ви себе відчуваєте?"
+              placeholder="How are you feeling?"
               className={styles.textarea}
             />
             <ErrorMessage
@@ -287,17 +287,17 @@ export default function AddDiaryEntryForm({
               className={styles.error}
             />
 
-            {/* Кнопка */}
+            {/* Button */}
             <button
               type="submit"
               disabled={isSubmitting}
               className={styles.btn}
             >
               {isSubmitting
-                ? 'Збереження...'
+                ? 'Saving...'
                 : initialData
-                  ? 'Оновити'
-                  : 'Зберегти'}
+                  ? 'Update'
+                  : 'Save'}
             </button>
           </Form>
         )}

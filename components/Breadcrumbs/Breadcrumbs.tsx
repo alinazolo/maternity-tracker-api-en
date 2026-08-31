@@ -6,9 +6,9 @@ import styles from './Breadcrumbs.module.css';
 import { useEntryStore } from '@/lib/store/entryStore';
 
 const LABELS: Record<string, string> = {
-  journey: 'Подорож',
-  diary: 'Щоденник',
-  profile: 'Профіль',
+  journey: 'Journey',
+  diary: 'Diary',
+  profile: 'Profile',
 };
 
 const HIDDEN_PREFIXES = ['/auth'];
@@ -29,12 +29,12 @@ export default function Breadcrumb({ lastLabel }: Props) {
 
   if (pathname === '/') {
     crumbs = [
-      { label: 'Лелека', path: '/', isLast: false },
-      { label: 'Мій день', path: '/', isLast: true },
+      { label: 'LELÉKA', path: '/', isLast: false },
+      { label: 'My Day', path: '/', isLast: true },
     ];
   } else {
     crumbs = [
-      { label: 'Лелека', path: '/', isLast: segments.length === 0 },
+      { label: 'LELÉKA', path: '/', isLast: segments.length === 0 },
       ...segments.map((seg, i) => ({
         label:
           i === segments.length - 1

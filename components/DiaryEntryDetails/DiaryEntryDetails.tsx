@@ -30,7 +30,7 @@ export default function DiaryEntryDetails({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
       setIsModal(false);
-      toast.success('Запис щоденника видалено');
+      toast.success('Note deleted');
       if (window.innerWidth < 1440) {
         router.push('/diary');
       } else {
@@ -39,7 +39,7 @@ export default function DiaryEntryDetails({
     },
     onError: () => {
       setIsModal(false);
-      toast.error('Сталась помилка при видаленні');
+      toast.error('An error occurred while deleting the note');
     },
   });
 
@@ -52,7 +52,7 @@ export default function DiaryEntryDetails({
   if (!entry) {
     return (
       <div className={styles.container}>
-        <h2 className={styles.title}>У вас поки що неиає записів...</h2>
+        <h2 className={styles.title}>You do not have any entries yet...</h2>
       </div>
     );
   } else {
@@ -60,18 +60,18 @@ export default function DiaryEntryDetails({
     const day = date.getDay();
     const mounth = date.getMonth();
     const mounths = [
-      'січня',
-      'лютого',
-      'березня',
-      'квітня',
-      'травня',
-      'червня',
-      'липня',
-      'серпня',
-      'вересня',
-      'жовтня',
-      'листопада',
-      'грудня',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ];
     const textMounth = mounths[mounth - 1];
     const year = date.getFullYear();
@@ -80,12 +80,12 @@ export default function DiaryEntryDetails({
         <Toaster position="top-right" />
         {isModal && (
           <ConfirmationModal
-            title="Бажаєте видалити запис?"
+            title="Do you want to delete the entry?"
             onConfirm={handleDelete}
             confirmButtonText={
-              createMutation.isPending ? 'Видалення...' : 'Видалити'
+              createMutation.isPending ? 'Deleting...' : 'Delete'
             }
-            cancelButtonText="Відмінити"
+            cancelButtonText="Cancel"
             onCancel={() => setIsModal(false)}
           />
         )}
