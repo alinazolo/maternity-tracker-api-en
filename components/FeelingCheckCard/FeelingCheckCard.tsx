@@ -11,14 +11,14 @@ export default function FeelingCard({
 }: FeelingCardProps) {
   return (
     <section className={styles.card}>
-      <h2 className={styles.title}> Як ви себе почуваєте?</h2>
-      <p className={styles.subtitle}>Рекомендація на сьогодні:</p>
+      <h2 className={styles.title}>How are you feeling?</h2>
+      <p className={styles.subtitle}>Today recommendation:</p>
       <p className={styles.text}>{recommendation}</p>
       <button
         className={styles.button}
         type="button"
         onClick={onAction}>
-        Зробити запис у щоденник
+        Add an entry to your diary
       </button>
     </section>
   );
