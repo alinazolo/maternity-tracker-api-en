@@ -86,10 +86,10 @@ export default function OnboardingForm() {
           await updateUser({ gender: values.gender });
         }
 
-        toast.success('Дані успішно збережено!');
+        toast.success('Data saved successfully!');
         router.push('/');
       } catch (error) {
-        toast.error('Сталася помилка при збереженні');
+        toast.error('An error occurred while saving');
         console.error('Onboarding submit error:', error);
       } finally {
         setSubmitting(false);
@@ -133,7 +133,7 @@ export default function OnboardingForm() {
           </div>
 
           <div className={styles.globalForm}>
-            <h1 className={styles.title}>Давайте познайомимось ближче</h1>
+            <h1 className={styles.title}>Let us get to know each other better</h1>
 
             <form
               className={styles.form}
@@ -156,7 +156,7 @@ export default function OnboardingForm() {
                   {avatarPreview ? (
                     <Image
                       src={avatarPreview}
-                      alt="Аватар"
+                      alt="Avatar"
                       fill
                       className={styles.image}
                     />
@@ -191,13 +191,13 @@ export default function OnboardingForm() {
                   className={styles.uploadBtn}
                   onClick={() => fileInputRef.current?.click()}
                 >
-                  Завантажити фото
+                  Upload photo
                 </button>
               </div>
 
               <div className={styles.inputContainer}>
                 <div className={styles.inputGroup}>
-                  <label className={styles.label}>Стать дитини</label>
+                  <label className={styles.label}>Baby gender</label>
 
                   <div
                     ref={genderMenuRef}
@@ -222,12 +222,12 @@ export default function OnboardingForm() {
                         }
                       >
                         {formik.values.gender === 'boy'
-                          ? 'Хлопчик'
+                          ? 'Boy'
                           : formik.values.gender === 'girl'
-                            ? 'Дівчинка'
+                            ? 'Girl'
                             : formik.values.gender === 'unknown'
-                              ? 'Ще не знаю'
-                              : 'Оберіть стать'}
+                              ? "I don't know yet"
+                              : 'Select gender'}
                       </span>
 
                       <svg
@@ -250,7 +250,7 @@ export default function OnboardingForm() {
                             setIsGenderMenuOpen(false);
                           }}
                         >
-                          Хлопчик
+                          Boy
                         </div>
 
                         <div
@@ -260,7 +260,7 @@ export default function OnboardingForm() {
                             setIsGenderMenuOpen(false);
                           }}
                         >
-                          Дівчинка
+                          Girl
                         </div>
 
                         <div
@@ -270,7 +270,7 @@ export default function OnboardingForm() {
                             setIsGenderMenuOpen(false);
                           }}
                         >
-                          Ще не знаю
+                          I do not know yet
                         </div>
                       </div>
                     )}
@@ -282,7 +282,7 @@ export default function OnboardingForm() {
                 </div>
 
                 <div className={styles.inputGroup}>
-                  <label className={styles.label}>Планова дата пологів</label>
+                  <label className={styles.label}>Expected delivery date</label>
 
                   <div className={styles.datePickerWrapper}>
                     <DatePicker
@@ -322,7 +322,7 @@ export default function OnboardingForm() {
                 disabled={formik.isSubmitting}
                 className={styles.button}
               >
-                {formik.isSubmitting ? 'Збереження...' : 'Зберегти'}
+                {formik.isSubmitting ? 'Saving...' : 'Save'}
               </button>
             </form>
           </div>

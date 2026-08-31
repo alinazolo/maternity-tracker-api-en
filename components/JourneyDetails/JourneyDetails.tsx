@@ -1,4 +1,3 @@
-
 'use client';
 
 import css from './JourneyDetails.module.css';
@@ -14,15 +13,15 @@ interface JourneyDetailsProps {
 }
 
 const iconsMap: Record<string, string> = {
-  Харчування: 'cutlery',
-  Активність: 'dumbbell',
-  'Відпочинок та комфорт': 'sofa',
+  Nutrition: 'cutlery',
+  Activity: 'dumbbell',
+  'Rest and comfort': 'sofa',
 };
 
 const categoryTitles: Record<string, string> = {
-  Харчування: 'Харчування',
-  Активність: 'Активність',
-'Відпочинок та комфорт': 'Відпочинок',
+  Nutrition: 'Nutrition',
+  Activity: 'Activity',
+  'Rest and comfort': 'Rest and comfort',
 };
 
 export default function JourneyDetails( { babyData, momData, isLoading = false }: JourneyDetailsProps) {
@@ -49,7 +48,7 @@ export default function JourneyDetails( { babyData, momData, isLoading = false }
               className={`${css.babyContent} ${activeTab === 'baby' ? css.activeTab : ''}`}
               onClick={() => setActiveTab('baby')}
             >
-              <span className={css.babyButton}>Розвиток малюка</span>
+              <span className={css.babyButton}>Baby development</span>
             </button>
 
             <button
@@ -57,7 +56,7 @@ export default function JourneyDetails( { babyData, momData, isLoading = false }
               className={`${css.motherBodyContent} ${activeTab === 'mom' ? css.activeTab : ''}`}
               onClick={() => setActiveTab('mom')}
             >
-              <span className={css.motherBodyButton}>Тіло мами</span>
+              <span className={css.motherBodyButton}>Mom body</span>
             </button>
           </div>
         </div>
@@ -67,7 +66,7 @@ export default function JourneyDetails( { babyData, momData, isLoading = false }
             {babyData.image ? (
               <Image
                 src={babyData.image}
-                alt={`Розвиток малюка ${babyData.weekNumber} тиждень`}
+                alt={`Baby development, week ${babyData.weekNumber}`}
                 className={css.babyPhotoSize}
                 width={200}
                 height={200}
@@ -93,7 +92,7 @@ export default function JourneyDetails( { babyData, momData, isLoading = false }
                   </svg>
 
                   <h3 className={css.titleFact}>
-                    Цікавий факт тижня
+                    Interesting fact of the week
                 </h3>
               </div>
               {babyData.interestingFact ? (
@@ -111,7 +110,7 @@ export default function JourneyDetails( { babyData, momData, isLoading = false }
   <div className={css.motherFeelingsTips}>
     <div className={css.motherLeftColumn}>
       <div className={css.motherFeelingCard}>
-        <h3 className={css.cardTitle}>Як ви можете почуватись</h3>
+        <h3 className={css.cardTitle}>How you may feel</h3>
 
         <div className={css.tags}>
           {momData?.feelings?.states?.map((emotion, index) => (
@@ -129,7 +128,7 @@ export default function JourneyDetails( { babyData, momData, isLoading = false }
       </div>
 
       <div className={css.motherTipsCard}>
-        <h3 className={css.tipsHeader}>Поради для вашого комфорту</h3>
+        <h3 className={css.tipsHeader}>Tips for your comfort</h3>
 
         <ul className={css.tipItems}>
                   {momData.comfortTips?.map((tip) => {

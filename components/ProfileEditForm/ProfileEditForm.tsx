@@ -56,10 +56,10 @@ export default function ProfileEditForm({
       setSubmitBtn(true);
       setResBtn(true);
       setUserStore(res);
-      message('Дані оновлено', false);
+      message('Profile updated successfully', false);
     },
     onError: () => {
-      message('Сталась помилка при збереженні даних', true);
+      message('An error occurred while saving the data', true);
       setSubmitBtn(false);
       handleReset();
     },
@@ -171,7 +171,7 @@ export default function ProfileEditForm({
           />
           {nameErr && (
             <span className={styles.errorMessage}>
-              Має бути від 1 до 32 символів
+              Must be between 1 and 32 characters
             </span>
           )}
         </div>
@@ -195,13 +195,13 @@ export default function ProfileEditForm({
             placeholder="Введіть email"
           />
           {emailError && (
-            <span className={styles.errorMessage}>Некоректний емейл</span>
+            <span className={styles.errorMessage}>Invalid email</span>
           )}
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor={`${id}-gender`} className={styles.label}>
-            Стать дитини
+            Baby gender
           </label>
           <Select
             inputId={`${id}-gender`}
@@ -304,7 +304,7 @@ export default function ProfileEditForm({
         </div>
 
         <div className={clsx(styles.formGroup)}>
-          <label className={styles.label}>Планова дата пологів</label>
+          <label className={styles.label}>Planned delivery date</label>
           <DatePicker
             selected={formik.values.dueDate}
             onChange={(date: Date | null) => {
@@ -321,7 +321,7 @@ export default function ProfileEditForm({
             autoComplete="off"
           />
           {isDateErr && (
-            <span className={styles.errorMessage}>Некоректна дата</span>
+            <span className={styles.errorMessage}>Invalid date</span>
           )}
         </div>
       </div>
@@ -333,14 +333,14 @@ export default function ProfileEditForm({
           className={clsx(styles.btn, styles.btnReset)}
           disabled={isResBtn}
         >
-          Відмінити зміни
+          Reset Changes
         </button>
         <button
           type="submit"
           className={clsx(styles.btn, styles.btnSave)}
           disabled={submitBtn}
         >
-          {createMutation.isPending ? 'Збереження...' : 'Зберегти зміни'}
+          {createMutation.isPending ? 'Saving...' : 'Save Changes'}
         </button>
       </div>
     </form>

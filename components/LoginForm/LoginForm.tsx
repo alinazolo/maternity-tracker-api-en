@@ -13,8 +13,8 @@ import { isAxiosError } from 'axios';
 import { type LoginRequest as LoginFormValues } from '@/types/types';
 
 const LoginFormSchema = Yup.object().shape({
-  email: Yup.string().email('Некоректна пошта').required('Обовʼязкове поле'),
-  password: Yup.string().required('Обовʼязкове поле'),
+  email: Yup.string().email('Invalid email').required('Required field'),
+  password: Yup.string().required('Required field'),
 });
 
 const initialValues: LoginFormValues = {
@@ -65,12 +65,12 @@ export default function LoginForm() {
               }
             } catch (error: unknown) {
               if (isAxiosError(error)) {
-                toast.error('Невірний email або пароль');
+                toast.error('Invalid email or password');
               } else {
-                toast.error('Щось пішло не так');
+                toast.error('Something went wrong');
               }
               // setErrors({
-              //   password: 'Невірний email або пароль',
+              //   password: 'Invalid email or password',
               // });
             } finally {
               setSubmitting(false);
@@ -79,14 +79,14 @@ export default function LoginForm() {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form className={css.form}>
-              <h1 className={css.title}>Вхід</h1>
+              <h1 className={css.title}>Sign in</h1>
               <div className={css.fieldWrapper}>
                 <Field
                   id={`${fieldId}-email`}
                   type="email"
                   name="email"
                   className={`${css.input} ${errors.email && touched.email ? css.inputError : ''}`}
-                  placeholder="Пошта"
+                  placeholder="Email"
                 />
                 <ErrorMessage
                   name="email"
@@ -100,7 +100,7 @@ export default function LoginForm() {
                   type="password"
                   name="password"
                   className={`${css.input} ${errors.password && touched.password ? css.inputError : ''}`}
-                  placeholder="Пароль"
+                  placeholder="Password"
                 />
                 <ErrorMessage
                   name="password"
@@ -109,13 +109,13 @@ export default function LoginForm() {
                 />
               </div>
               <button type="submit" disabled={isSubmitting} className={css.btn}>
-                {isSubmitting ? 'Завантаження...' : 'Увійти'}
+                {isSubmitting ? 'Loading...' : 'Sign in'}
               </button>
 
               <p className={css.register}>
-                Немає акаунту?{' '}
+                Do you have an account?{' '}
                 <span>
-                  <Link href="/register">Зареєструватися</Link>
+                  <Link href="/register">Sign up</Link>
                 </span>
               </p>
             </Form>

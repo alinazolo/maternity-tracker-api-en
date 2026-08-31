@@ -14,16 +14,16 @@ import type { RegisterRequest, User } from '@/types/types';
 
 const RegisterFormSchema = Yup.object().shape({
   name: Yup.string()
-    .required('Обовʼязкове поле')
-    .max(32, 'Максимум 32 символи'),
+    .required('Required field')
+    .max(32, 'Maximum 32 characters'),
   email: Yup.string()
-    .email('Некоректна пошта')
-    .required('Обовʼязкове поле')
-    .max(64, 'Максимум 64 символи'),
+    .email('Invalid email')
+    .required('Required field')
+    .max(64, 'Maximum 64 characters'),
   password: Yup.string()
-    .required('Обовʼязкове поле')
-    .min(8, 'Мінімум 8 символів')
-    .max(128, 'Максимум 128 символів'),
+    .required('Required field')
+    .min(8, 'Minimum 8 characters')
+    .max(128, 'Maximum 128 characters'),
 });
 
 const initialValues: RegisterFormValues = {
@@ -66,7 +66,7 @@ export default function RegisterForm() {
             try {
               const user: User = await register(values);
               if (!user) {
-                toast.error('Щось пішло не так');
+                toast.error('Something went wrong');
               } else {
                 setUser(user);
                 resetForm();
@@ -75,13 +75,13 @@ export default function RegisterForm() {
             } catch (error: unknown) {
               if (isAxiosError(error)) {
                 toast.error(
-                  error.response?.data?.message || 'Помилка реєстрації'
+                  error.response?.data?.message || 'Registration error'
                 );
               } else {
-                toast.error('Щось пішло не так');
+                toast.error('Something went wrong');
               }
               setErrors({
-                password: 'Користувач з такою поштою вже існує',
+                password: 'A user with this email already exists',
               });
             } finally {
               setSubmitting(false);
@@ -90,10 +90,10 @@ export default function RegisterForm() {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form className={css.form}>
-              <h1 className={css.title}>Реєстрація</h1>
+              <h1 className={css.title}>Registration</h1>
 
               <label htmlFor={`${fieldId}-name`} className={css.label}>
-                Імʼя*
+                Name*
               </label>
               <div className={css.fieldWrapper}>
                 <Field
@@ -101,7 +101,7 @@ export default function RegisterForm() {
                   type="text"
                   name="name"
                   className={`${css.input} ${errors.name && touched.name ? css.inputError : ''}`}
-                  placeholder="Ваше імʼя"
+                  placeholder="Your name"
                 />
                 <ErrorMessage
                   name="name"
@@ -110,7 +110,7 @@ export default function RegisterForm() {
                 />
               </div>
               <label htmlFor={`${fieldId}-email`} className={css.label}>
-                Пошта*
+                Email*
               </label>
               <div className={css.fieldWrapper}>
                 <Field
@@ -128,7 +128,7 @@ export default function RegisterForm() {
                 />
               </div>
               <label htmlFor={`${fieldId}-password`} className={css.label}>
-                Пароль*
+                Password*
               </label>
               <div className={css.fieldWrapper}>
                 <Field
@@ -146,13 +146,13 @@ export default function RegisterForm() {
                 />
               </div>
               <button type="submit" disabled={isSubmitting} className={css.btn}>
-                {isSubmitting ? 'Завантаження...' : 'Зареєструватись'}
+                {isSubmitting ? 'Loading...' : 'Sign up'}
               </button>
 
               <p className={css.register}>
-                Вже маєте аккаунт?{' '}
+                Already have an account?{' '}
                 <span>
-                  <Link href="/login">Увійти</Link>
+                  <Link href="/login">Sign in</Link>
                 </span>
               </p>
             </Form>

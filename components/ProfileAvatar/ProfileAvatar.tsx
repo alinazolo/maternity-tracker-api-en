@@ -37,10 +37,10 @@ export default function ProfileAvatar({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user'] });
-      message('Аватар успішно оновлено', false);
+      message('Avatar updated successfully', false);
     },
     onError: () => {
-      message('Сталась помилка при завантаженні аватара', true);
+      message('An error occurred while uploading the avatar', true);
     },
   });
 
@@ -88,7 +88,7 @@ export default function ProfileAvatar({
           className={styles.uploadBtn}
           onClick={() => fileInputRef.current?.click()}
         >
-          Завантажити нове фото
+          Upload new avatar
         </button>
       </div>
     </div>

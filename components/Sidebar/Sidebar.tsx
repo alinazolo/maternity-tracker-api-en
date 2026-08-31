@@ -59,7 +59,7 @@ export default function SideBar() {
           <svg width="32" height="32">
             <use href="/icons.svg#logo" />
           </svg>
-          <span className={css.logoText}>Лелека</span>
+          <span className={css.logoText}>Leleka</span>
         </Link>
 
         <nav className={css.nav}>
@@ -69,7 +69,7 @@ export default function SideBar() {
                 <svg width="24" height="24">
                   <use href="/icons.svg#me-day" />
                 </svg>
-                <span>Мій день</span>
+                <span>My day</span>
               </Link>
             </li>
 
@@ -81,7 +81,7 @@ export default function SideBar() {
                 <svg width="24" height="24">
                   <use href="/icons.svg#journey" />
                 </svg>
-                <span>Подорож</span>
+                <span>Journey</span>
               </Link>
             </li>
 
@@ -93,7 +93,7 @@ export default function SideBar() {
                 <svg width="24" height="24">
                   <use href="/icons.svg#diary" />
                 </svg>
-                <span>Щоденник</span>
+                <span>Diary</span>
               </Link>
             </li>
 
@@ -105,7 +105,7 @@ export default function SideBar() {
                 <svg width="24" height="24">
                   <use href="/icons.svg#profile" />
                 </svg>
-                <span>Профіль</span>
+                <span>Profile</span>
               </Link>
             </li>
           </ul>

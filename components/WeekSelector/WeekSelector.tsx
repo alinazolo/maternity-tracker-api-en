@@ -71,7 +71,7 @@ export default function WeekSelector({
               `}
             >
               <span className={css.weekNumber}>{week}</span>
-              <span className={css.weekName}>Тиждень</span>
+              <span className={css.weekName}>Week</span>
             </button>
           );
         })}

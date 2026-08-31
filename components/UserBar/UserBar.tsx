@@ -33,7 +33,7 @@ export default function UserBar({ user }: UserBarProps) {
     } catch {
       setIsModal(false);
       setisFetch(false);
-      toast.error('Сталась помилка при виході');
+      toast.error('An error occurred while logging out');
     }
   }
 
@@ -42,9 +42,9 @@ export default function UserBar({ user }: UserBarProps) {
       <Toaster />
       {isModal && (
         <ConfirmationModal
-          title="Бажаєте вийти?"
-          cancelButtonText="Залишитись"
-          confirmButtonText={isFetch ? 'Вихід...' : 'Вийти'}
+          title="Do you want to log out?"
+          cancelButtonText="Stay"
+          confirmButtonText={isFetch ? 'Logging out...' : 'Log out'}
           onCancel={() => setIsModal(false)}
           onConfirm={() => handleLogout()}
         />

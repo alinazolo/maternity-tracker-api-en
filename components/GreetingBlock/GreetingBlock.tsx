@@ -9,13 +9,13 @@ type Props = {
 };
 
 function getGreetingByHour(hour: number) {
-  if (hour >= 6 && hour < 12) return 'Доброго ранку';
-  if (hour >= 12 && hour < 18) return 'Доброго дня';
-  if (hour >= 18 && hour < 24) return 'Доброго вечора';
-  return 'Доброї ночі';
+  if (hour >= 6 && hour < 12) return 'Good morning';
+  if (hour >= 12 && hour < 18) return 'Good day';
+  if (hour >= 18 && hour < 24) return 'Good evening';
+  return 'Good night';
 }
 
-export default function GreetingBlock({ name = 'гість' }: Props) {
+export default function GreetingBlock({ name = 'guest' }: Props) {
   const user = useAuthStore(state => state.user);
   const [greeting, setGreeting] = useState('');
   if (user?.name) {

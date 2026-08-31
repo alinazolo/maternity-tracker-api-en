@@ -75,7 +75,7 @@ export default function TasksReminderCard() {
   return (<>
     <section className={css.card}>
       <div className={css.header}>
-        <h2 className={css.title}>Важливі завдання</h2>
+        <h2 className={css.title}>Important tasks</h2>
         <button className={css.addBtn} onClick={handleAddClick}>
           <svg className={css.addBtn} width={24} height={24}>
             <use href="/icons.svg#plus" />
@@ -85,13 +85,13 @@ export default function TasksReminderCard() {
       {tasks?.length === 0 ? (
         <div className={css.emptyState}>
           <p className={css.emptyText}>
-            Наразі немає жодних завдань
+            There are no tasks at the moment
           </p>
           <p className={css.emptyTextSeconde}>
-            Створіть мершій нове завдання!
+            Create your first new task!
           </p>
           <button className={css.createBtn} onClick={handleAddClick}>
-            Створити завдання
+            Create task
           </button>
         </div>
       ) : (
