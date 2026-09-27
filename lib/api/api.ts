@@ -4,8 +4,7 @@ import axios from 'axios';
 // In the browser the API is on the same origin, so a relative path is enough.
 // On the server (serverApi.ts) an absolute URL is required.
 export const nextServer = axios.create({
-  baseURL:
-    typeof window === 'undefined' ? `${process.env.NEXT_API_URL}/api` : '/api',
+  baseURL: "/api",
   withCredentials: true,
 });
 
