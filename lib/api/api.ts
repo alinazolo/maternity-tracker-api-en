@@ -1,8 +1,11 @@
 import axios from 'axios';
 // import { refreshSession } from './clientApi';
 
+// In the browser the API is on the same origin, so a relative path is enough.
+// On the server (serverApi.ts) an absolute URL is required.
 export const nextServer = axios.create({
-  baseURL: `${process.env.NEXT_API_URL}/api`,
+  baseURL:
+    typeof window === 'undefined' ? `${process.env.NEXT_API_URL}/api` : '/api',
   withCredentials: true,
 });
 
