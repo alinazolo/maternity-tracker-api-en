@@ -6,6 +6,7 @@ import JourneyDetails from '@/components/JourneyDetails/JourneyDetails';
 import { useQuery } from '@tanstack/react-query';
 import { getBabyState, getMomState, homePrivate } from '@/lib/api/clientApi';
 import { useParams, useRouter } from 'next/navigation';
+import Loader from '@/components/Loader/Loader';
 
 export default function Journey() {
   const router = useRouter();
@@ -72,11 +73,11 @@ export default function Journey() {
   const isError = isHomeError || isBabyError || isMomError;
 
   if (isHomeLoading) {
-    return <div>Завантаження...</div>;
+    return <Loader />;
   }
 
   if (isHomeError || !homeData || !currentWeek) {
-    return <div>Не вдалося завантажити поточний тиждень</div>;
+    return <div>Failed to load the current week.</div>;
   }
 
   return (<>
@@ -90,8 +91,10 @@ export default function Journey() {
         router.replace(`/journey/${week}`);
       }}
     />
-    {isError ? (
-      <div>Помилка</div>
+    {isLoading ? (
+      <Loader />
+    ) : isError ? (
+      <div>Error</div>
     ) : (
       <JourneyDetails
         key={selectedWeek}

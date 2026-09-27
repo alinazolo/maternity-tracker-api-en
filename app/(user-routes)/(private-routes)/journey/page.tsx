@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
+import Loader from '@/components/Loader/Loader';
 
 import { homePrivate } from '@/lib/api/clientApi';
 
@@ -21,11 +22,11 @@ export default function JourneyRedirectPage() {
   }, [data?.currentWeek, router]);
 
   if (isLoading) {
-    return <p>Завантаження...</p>;
+    return <Loader />;
   }
 
   if (isError || !data) {
-    return <p>Не вдалося завантажити дані</p>;
+    return <p>An error occurred while loading data...</p>;
   }
 
   return null;

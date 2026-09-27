@@ -153,7 +153,7 @@ export default function ProfileEditForm({
       <div className={styles.inputGroup}>
         <div className={styles.formGroup}>
           <label htmlFor={`${id}-name`} className={styles.label}>
-            Ім`я
+            Name
           </label>
           <input
             type="text"
@@ -167,7 +167,7 @@ export default function ProfileEditForm({
               handleChangeName(data);
             }}
             className={clsx(styles.input, nameErr && styles.inputError)}
-            placeholder="Введіть ім'я"
+            placeholder="Enter your name"
           />
           {nameErr && (
             <span className={styles.errorMessage}>
@@ -207,9 +207,9 @@ export default function ProfileEditForm({
             inputId={`${id}-gender`}
             name="gender"
             options={[
-              { value: 'unknown', label: 'Оберіть стать' },
-              { value: 'girl', label: 'Дівчинка' },
-              { value: 'boy', label: 'Хлопчик' },
+              { value: 'unknown', label: 'Select gender' },
+              { value: 'girl', label: 'Girl' },
+              { value: 'boy', label: 'Boy' },
             ]}
             value={
               formik.values.gender
@@ -217,10 +217,10 @@ export default function ProfileEditForm({
                     value: formik.values.gender,
                     label:
                       formik.values.gender === 'girl'
-                        ? 'Дівчинка'
+                        ? 'Girl'
                         : formik.values.gender === 'boy'
-                          ? 'Хлопчик'
-                          : 'Оберіть стать',
+                          ? 'Boy'
+                          : 'Select gender',
                   }
                 : null
             }

@@ -9,8 +9,8 @@ import { getMe } from '@/lib/api/serverApi';
 import ProfileClient from './Profile.client';
 
 export const metadata: Metadata = {
-  title: 'Профіль',
-  description: 'Сторінка профілю користувача',
+  title: 'Profile',
+  description: 'User profile page',
 };
 
 export default async function Profile() {

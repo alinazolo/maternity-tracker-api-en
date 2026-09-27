@@ -9,8 +9,8 @@ import { getNotes } from '@/lib/api/serverApi';
 import DiaryClient from './Diary.client';
 
 export const metadata: Metadata = {
-  title: 'Щоденник',
-  description: 'Сторінка щоденника користувачва',
+  title: 'Diary',
+  description: 'User diary page',
 };
 
 export default async function Diary() {

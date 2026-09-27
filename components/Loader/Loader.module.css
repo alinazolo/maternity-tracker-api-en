@@ -1,12 +1,11 @@
 .cont {
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
-  background-color: gray;
-  opacity: 0.2;
+  background-color: rgba(128, 128, 128, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;

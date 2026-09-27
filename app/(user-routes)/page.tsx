@@ -12,6 +12,7 @@ import { useAuthStore } from '@/lib/store/authStore';
 import { homePrivate, homePublic } from "@/lib/api/clientApi";
 import css from "./page.module.css";
 import AddDiaryEntryModal from '@/components/AddDiaryEntryModal/AddDiaryEntryModal';
+import Loader from '@/components/Loader/Loader';
 
 
 export default function Home() {
@@ -38,7 +39,7 @@ export default function Home() {
       setIsModalOpen(false);
     };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loader />;
   const baby = data?.babyState;
   if (!baby) return null;
 

@@ -12,6 +12,7 @@ import DiaryList from '@/components/DiaryList/DiaryList';
 import DiaryEntryDetails from '@/components/DiaryEntryDetails/DiaryEntryDetails';
 import AddDiaryEntryModal from '@/components/AddDiaryEntryModal/AddDiaryEntryModal';
 
+
 export default function Diary() {
   const [isModalUpdate, setIsModalUpdate] = useState(false);
   const [isModalCreate, setIsModalCreate] = useState(false);
@@ -45,7 +46,7 @@ export default function Diary() {
             onEntryCreate={() => setIsModalCreate(true)}
           />
         ) : (
-          <p>Сталась помилка при завантаженні</p>
+          <p>An error occurred while loading the notes.</p>
         )}
 
         <div className={css.entryDetails}>

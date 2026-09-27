@@ -43,13 +43,13 @@ export default function ProfileClient() {
           email={data.email}
         />
       ) : (
-        <p>Сталася помилка при завантаженні даних користувача...</p>
+        <p>An error occurred while loading user data...</p>
       )}
 
       {data ? (
         <ProfileEditForm message={sendMess} user={data} />
       ) : (
-        <p>Сталася помилка при завантаженні даних користувача...</p>
+        <p>An error occurred while loading user data...</p>
       )}
     </div>
   );
