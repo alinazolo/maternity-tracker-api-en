@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     if (isAxiosError(error)) {
       return NextResponse.json(
         { error: error.message, response: error.response?.data },
-        { status: error.status }
+        { status: error.response?.status || 500 }
       );
     }
     return NextResponse.json(
